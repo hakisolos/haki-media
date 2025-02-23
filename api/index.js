@@ -78,6 +78,7 @@ fastify.get("/media/*", async (request, reply) => {
 
 var start = async () => {
   try {
+    await mega.initialize()
     var port = process.env.PORT || 3000
     await fastify.listen({ port, host: '0.0.0.0' })
   } catch (err) {
