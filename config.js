@@ -1,6 +1,6 @@
 module.exports = {
   mega: {
-    email: process.env.EMAIL || 'maxwellexcel2@gmail.com, //mega email
+    email: process.env.EMAIL || 'maxwellexcel2@gmail.com', //mega email
     password: process.env.PASS || 'mynameisexcel2@', //mega password
     storagePath: './storage'
   },
