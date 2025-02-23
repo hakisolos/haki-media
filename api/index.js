@@ -78,14 +78,12 @@ fastify.get("/media/*", async (request, reply) => {
 
 var start = async () => {
   try {
-    await mega.initialize();
-    console.log("Logged IN!");
-    await fastify.listen({ port: config.server.port, host: '0.0.0.0' });
-    console.log(`Running at ${config.server.domain}:${config.server.port}`);
+    var port = process.env.PORT || 3000
+    await fastify.listen({ port, host: '0.0.0.0' })
   } catch (err) {
-    fastify.log.error(err);
-    console.log("EXITING");
-    process.exit(1);
+    fastify.log.error(err)
+    process.exit(1)
   }
-};
-start();
+}
+
+start()
