@@ -28,6 +28,7 @@ fastify.addHook("onSend", (request, reply, payload, done) => {
 fastify.post("/upload", async (request, reply) => {
   var files = [];
   try {
+    await mega.initialize()
     for await (var part of request.parts()) {
       if (!part.file) continue;
       var buffer = await part.toBuffer();
@@ -78,7 +79,7 @@ fastify.get("/media/*", async (request, reply) => {
 
 var start = async () => {
   try {
-    await mega.initialize()
+    
     var port = process.env.PORT || 3000
     await fastify.listen({ port, host: '0.0.0.0' })
   } catch (err) {
